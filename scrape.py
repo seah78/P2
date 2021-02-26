@@ -6,4 +6,5 @@ url = 'http://books.toscrape.com/'
 
 reponse = requests.get(url)
 
-print(reponse)
+if reponse.ok:
+	print(reponse.text)
