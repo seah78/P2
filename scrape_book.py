@@ -1,8 +1,22 @@
 from bs4 import BeautifulSoup
-from book_information import book_information
-from book_description import book_description
-from book_category import book_category
 from request import request
+
+BASE_DIR = 'http://books.toscrape.com/'
+
+def book_description(description): #retourne la description du livre
+	if description:
+		description = description.text
+	else:
+		description = ""
+	return description
+
+def book_information(trs): # Création d'un dictionnaire pour récupérer les product information
+	sub_book = {}
+	for tr in trs: 
+		th = tr.find('th').text
+		td = tr.find('td').text
+		sub_book[th] = td
+	return sub_book
 
 def scrape_book(url):
 	book = {} # dictionnaire, les {} peuvent être remplacé par dict() pour plus de clarté
@@ -15,7 +29,8 @@ def scrape_book(url):
 	book['price_excluding_tax'] = information['Price (excl. tax)']				#price_excluding_tax
 	book['number_available'] = information['Availability'] 					#number_available
 	book['product_description'] = book_description(soup.find('article').find('p', recursive=False)) #description								#product_description
-	book['category'] = book_category(soup.find('ul', 'breadcrumb').select('li'))   #links_a[2] 											#category
+	book['category'] = soup.ul.find_all("a")[-1].text
+#book_category(soup.find('ul', 'breadcrumb').select('li'))   #links_a[2] 											#category
 	book['review_rating'] = information['Number of reviews'] 					#review_rating
-	book['image_url'] = url + soup.find('img')['src'].replace('../../', '') #image_url
+	book['image_url'] =  soup.find('img')['src'].replace('../../', BASE_DIR) #image_url
 	return book
