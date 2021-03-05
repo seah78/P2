@@ -26,4 +26,7 @@ def scrape_book(url):
 	return book
 
 dictionnary_book = scrape_book(temp_url)
-print(dictionnary_book)
+
+bookcsv = open('books.csv', 'w')
+bookcsv.write('product_page_url' + ';' + 'upc' + ';' + 'title' + ';' + 'price_including_tax' + ';' + 'price_excluding_tax' + ';' + 'number_available' + ';' + 'product_description' + ';' + 'category' + ';' + 'review_rating' + ';' + 'image_url' + '\n')
+bookcsv.write(dictionnary_book['product_page_url'] + ';' +  dictionnary_book['upc'] + ';' +  dictionnary_book['title'] + ';' +  dictionnary_book['price_including_tax'] + ';' +  dictionnary_book['price_excluding_tax'] + ';' +  dictionnary_book['number_available'] + ';' +   dictionnary_book['product_description'] + ';' +  dictionnary_book['category'] + ';' +  dictionnary_book['review_rating'] + ';' +  dictionnary_book['image_url'] + '\n')
