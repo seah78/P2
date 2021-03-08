@@ -35,8 +35,12 @@ bookcsv.close
 bookcsv = open('books.csv', 'r')
 """
 
-with open('books.csv', 'w', newline='') as f:
-     f.write(dictionnary_book['product_page_url'] + ';' +  dictionnary_book['upc'] + ';' +  dictionnary_book['title'] + ';' +  dictionnary_book['price_including_tax'] + ';' +  dictionnary_book['price_excluding_tax'] + ';' +  dictionnary_book['number_available'] + ';' +   dictionnary_book['product_description'] + ';' +  dictionnary_book['category'] + ';' +  dictionnary_book['review_rating'] + ';' +  dictionnary_book['image_url'] + '')
+with open('books.csv', 'w', newline='', encoding='utf-8') as f:
+	csv_writer = csv.DictWriter(f, dictionnary_book.keys(), delimiter=';', dialect='excel')    #dictionnary_book['product_page_url'], dictionnary_book['upc'], dictionnary_book['title'], dictionnary_book['price_including_tax'], dictionnary_book['price_excluding_tax'], dictionnary_book['number_available'], dictionnary_book['product_description'], dictionnary_book['category'], dictionnary_book['review_rating'],  dictionnary_book['image_url'], '')
+	csv_writer.writeheader()
+	csv_writer.writerow(dictionnary_book)
+	
+	#f.write(dictionnary_book['product_page_url'] + ';' +  dictionnary_book['upc'] + ';' +  dictionnary_book['title'] + ';' +  dictionnary_book['price_including_tax'] + ';' +  dictionnary_book['price_excluding_tax'] + ';' +  dictionnary_book['number_available'] + ';' +   dictionnary_book['product_description'] + ';' +  dictionnary_book['category'] + ';' +  dictionnary_book['review_rating'] + ';' +  dictionnary_book['image_url'] + '')
 
 
 
