@@ -2,6 +2,7 @@ from request import request
 from bs4 import BeautifulSoup
 import csv
 from scrape_book import scrape_book
+from pathlib import Path
 
 BASE_DIR = 'http://books.toscrape.com/'
 
@@ -9,6 +10,8 @@ BASE_DIR = 'http://books.toscrape.com/'
 temp_url = 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html'
 #temp_url = temp_url.replace('index.html', '') #prévoir une condition si index.html n'est pas dans l'url
 
+#création du dossier data
+Path('data').mkdir(exist_ok=False)
 
 html = request(temp_url)
 soup = BeautifulSoup(html, 'html.parser')
