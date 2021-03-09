@@ -3,26 +3,29 @@ from bs4 import BeautifulSoup
 import csv
 from scrape_book import scrape_book
 
+BASE_DIR = 'http://books.toscrape.com/'
 
 
-temp_url = 'http://books.toscrape.com/catalogue/the-last-mile-amos-decker-2_754/index.html'
+temp_url = 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html'
 #temp_url = temp_url.replace('index.html', '') #prévoir une condition si index.html n'est pas dans l'url
 
-"""
+
 html = request(temp_url)
 soup = BeautifulSoup(html, 'html.parser')
-print(soup)
 
-nb_page = soup
+# url_book_list = []
+
+
+
+if soup.find('ul', 'pager').find('li', 'next'):
+	page = soup.find('ul', 'pager').find('li', 'next').find('a')['href']
+	print(page)
+
+
+
+
+
 """
-
-
-
-
-
-
-
-
 dictionnary_book = scrape_book(temp_url)
 
 #Ajout au fichier csv
@@ -30,7 +33,7 @@ with open('books.csv', 'w', newline='', encoding='utf-8') as f:
 	csv_writer = csv.DictWriter(f, dictionnary_book.keys(), delimiter=';', dialect='excel') 
 	csv_writer.writeheader()
 	csv_writer.writerow(dictionnary_book)
-	
+"""	
 
 
 
