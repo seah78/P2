@@ -11,12 +11,17 @@ temp_url = 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/
 #temp_url = temp_url.replace('index.html', '') #prévoir une condition si index.html n'est pas dans l'url
 
 #création du dossier data
-Path('data').mkdir(exist_ok=False)
+#Path('data').mkdir(exist_ok=False)
 
 html = request(temp_url)
 soup = BeautifulSoup(html, 'html.parser')
 
-# url_book_list = []
+
+h3s = soup.findAll('h3') # books url dans balise h3
+url_book_list=[] # création d'une liste
+for h3 in h3s: # boucle qui imprime la liste des urls d'un livre d'une page
+	link = h3.find('a')['href'].replace('../../..', BASE_DIR + 'catalogue')
+	print(link)
 
 
 
