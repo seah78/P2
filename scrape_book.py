@@ -29,8 +29,7 @@ def scrape_book(url):
 	book['price_excluding_tax'] = information['Price (excl. tax)']				#price_excluding_tax
 	book['number_available'] = information['Availability'] 					#number_available
 	book['product_description'] = book_description(soup.find('article').find('p', recursive=False)) #description								#product_description
-	book['category'] = soup.ul.find_all("a")[-1].text
-#book_category(soup.find('ul', 'breadcrumb').select('li'))   #links_a[2] 											#category
+	book['category'] = soup.ul.find_all("a")[-1].text	#category
 	book['review_rating'] = information['Number of reviews'] 					#review_rating
 	book['image_url'] =  soup.find('img')['src'].replace('../../', BASE_DIR) #image_url
 	return book

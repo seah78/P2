@@ -7,3 +7,8 @@ def pathdir(path):
 		Path(path).mkdir(exist_ok=False)
 	else:
 		print('Le dossier existe déjà')
+
+
+
+
+#Path.stat() pour vérifier si header existe dans mon csv
