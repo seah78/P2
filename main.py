@@ -2,12 +2,9 @@ from request import request
 from bs4 import BeautifulSoup
 import csv
 from scrape_book import scrape_book
-from pathlib import Path
+from path import pathdir
 
-
-#création du dossier data
-Path('data').mkdir(exist_ok=False)
-
+pathdir('data')
 
 
 """
