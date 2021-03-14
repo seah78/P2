@@ -8,11 +8,5 @@ def pathdir(path):
 	else:
 		print('Le dossier existe déjà')
 
-
-<<<<<<< HEAD
-
-
 #Path.stat() pour vérifier si header existe dans mon csv
-=======
-#Path.stat() pour vérifier si header existe
->>>>>>> fd33b86c507ab77c53057f59a65bcdd6f1fd552e
+

@@ -4,12 +4,9 @@ import csv
 from scrape_book import scrape_book
 
 BASE_DIR = 'http://books.toscrape.com/'
-BASE_CAT = 'http://books.toscrape.com/catalogue/category/books'
 
 temp_url = 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html'
 #temp_url = temp_url.replace('index.html', '') #prévoir une condition si index.html n'est pas dans l'url
-
-
 
 def book_list(soup):
 	h3s = soup.findAll('h3') # books url dans balise h3
