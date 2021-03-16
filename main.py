@@ -3,32 +3,18 @@ from bs4 import BeautifulSoup
 import csv
 from scrape_book import scrape_book
 from path import pathdir
-from write_file import *
+from write_file import save_book
 
 
 BASE_DIR = 'http://books.toscrape.com/'
 
 temp_url = 'http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html'
 
-#pathdir('/data/Poetry/')
-
-
-
-"""
-si condition ok alors
-	récup livre
-	boucle
-	"""
-
-
 
 
 dictionnary_book = scrape_book(temp_url)
-save_image(dictionnary_book)
-#write_csv(dictionnary_book)
+save_book(dictionnary_book)
 
-
-#Ajout au fichier csv
 
 
 """
