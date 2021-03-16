@@ -12,6 +12,8 @@ def write_csv(dictionnary_book):
 	print(category)
 	path = Path(f'/data/{category}/')
 	print(path)
+	print(path.absolute())
+	print(path.resolve())
 	path.mkdir(parents=True, exist_ok=True)
 	"""
 	filepath = path/f'{category}.csv'
