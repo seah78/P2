@@ -1,19 +1,28 @@
 from pathlib import Path
 import csv
 from path import pathdir
+from request import request
 
 
-def save_image(url_image, upc):
-	with open(f'{upc}.jpg', "b") as file:
-	    file.write(request(url_image))
+def save_image(dictionnary_book):
+	upc = dictionnary_book['upc']
+	url_image = dictionnary_book['image_url']
+	category = dictionnary_book['category']
+	path = Path(f'./data/{category}/image/')
+	path.mkdir(parents=True, exist_ok=True)
+	filepath = path/f'{upc}.jpg'
+	with filepath.open('wb') as file:
+		file.write(request(url_image))
+
+
 
 def write_csv(dictionnary_book):
 	category = dictionnary_book['category']
 	path = Path(f'./data/{category}/')
 	path.mkdir(parents=True, exist_ok=True)
 	filepath = path/f'{category}.csv'
-	with filepath.open("a+", newline="", encoding="utf-8") as csvfile:
-		writer = csv.DictWriter(csvfile, fieldnames=dictionnary_book.keys(), delimiter=";")
+	with filepath.open('a+', newline='', encoding='utf-8') as csvfile:
+		writer = csv.DictWriter(csvfile, fieldnames=dictionnary_book.keys(), delimiter=';')
 		if filepath.stat().st_size == 0:
 			writer.writeheader()
 		writer.writerow(dictionnary_book)

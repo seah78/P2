@@ -24,8 +24,9 @@ si condition ok alors
 
 
 dictionnary_book = scrape_book(temp_url)
+save_image(dictionnary_book)
+#write_csv(dictionnary_book)
 
-write_csv(dictionnary_book)
 
 #Ajout au fichier csv
 
