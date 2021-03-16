@@ -10,7 +10,7 @@ BASE_DIR = 'http://books.toscrape.com/'
 
 temp_url = 'http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html'
 
-pathdir('/data/Poetry')
+#pathdir('/data/Poetry/')
 
 
 
@@ -25,7 +25,7 @@ si condition ok alors
 
 dictionnary_book = scrape_book(temp_url)
 
-#write_csv(dictionnary_book)
+write_csv(dictionnary_book)
 
 #Ajout au fichier csv
 

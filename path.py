@@ -6,7 +6,7 @@ def pathdir(path):
 
 	if Path(path).exists() == False :
 		print('Dossier inexistant')
-		Path(path).mkdir(exist_ok=False)
+		path.mkdir(parents=True,exist_ok=True)
 	else:
 		print('Dossier existant')
 
