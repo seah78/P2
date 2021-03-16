@@ -9,20 +9,16 @@ def save_image(url_image, upc):
 
 def write_csv(dictionnary_book):
 	category = dictionnary_book['category']
-	print(category)
-	path = Path(f'/data/{category}/')
-	print(path)
-	print(path.absolute())
-	print(path.resolve())
+	path = Path(f'./data/{category}/')
 	path.mkdir(parents=True, exist_ok=True)
-	"""
 	filepath = path/f'{category}.csv'
 	with filepath.open("a+", newline="", encoding="utf-8") as csvfile:
 		writer = csv.DictWriter(csvfile, fieldnames=dictionnary_book.keys(), delimiter=";")
 		if filepath.stat().st_size == 0:
 			writer.writeheader()
 		writer.writerow(dictionnary_book)
-	"""
+
+
 
 
 """
