@@ -1,12 +1,8 @@
 from request import request
 from bs4 import BeautifulSoup
 import csv
-from scrape_book import scrape_book
 
 BASE_DIR = 'http://books.toscrape.com/'
-
-temp_url = 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html'
-#temp_url = temp_url.replace('index.html', '') #prévoir une condition si index.html n'est pas dans l'url
 
 def book_list(soup):
 	h3s = soup.findAll('h3') # books url dans balise h3
@@ -16,23 +12,22 @@ def book_list(soup):
 		url_book_list.append(link)
 	return url_book_list
 
-
-
 def scrape_category(url):
 	url_base = url
 	html = request(url_base)
 	soup = BeautifulSoup(html, 'html.parser')
 	all_book_list=[]
 	all_book_list.extend(book_list(soup))
-	page_next = soup.find('ul', 'pager').find('li', 'next')
-	page_number=1
-	while page_next:
-		page_number += 1
-		page_url = url_base.replace('index.html', f'page-{page_number}.html')
-		html = request(page_url)
-		soup = BeautifulSoup(html, 'html.parser')
-		all_book_list.extend(book_list(soup))
+	if len(all_book_list) == 20:
 		page_next = soup.find('ul', 'pager').find('li', 'next')
+		page_number=1
+		while page_next:
+			page_number += 1
+			page_url = url_base.replace('index.html', f'page-{page_number}.html')
+			html = request(page_url)
+			soup = BeautifulSoup(html, 'html.parser')
+			all_book_list.extend(book_list(soup))
+			page_next = soup.find('ul', 'pager').find('li', 'next')
 	return all_book_list
 
 """	
