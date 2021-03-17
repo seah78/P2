@@ -27,7 +27,7 @@ def scrape(url):
 		all_category_list.append(link)
 	for link in all_category_list:
 		scrape_all_book_category(link)
-
+	
 scrape(BASE_DIR)
 
 
