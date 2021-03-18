@@ -1,6 +1,5 @@
 from request import request
 from bs4 import BeautifulSoup
-import csv
 
 BASE_DIR = "http://books.toscrape.com/"
 

@@ -8,28 +8,37 @@ Extraction des informations tarifaires du site http://books.toscrape.com/
 
 - Python 3.9
 - Terminal
+- Git
 
 ### Installation
 
 Installer Python 3.9 depuis https://www.python.org/
-Lancer le terminal et positionnez-vous dans le répertoire de l'application.
+
+Lancer le terminal
+
+Téléchargez le repository en utilisant la commande suivante :
+	`git clone https://github.com/seah78/P2.git`
+
+Positionnez-vous dans le répertoire de l'application en utilisant la commande suivante :
+	`cd P2`
+
 Activez l'environnement virtuel en utilisant les commandes suivantes :
 
-	python3 -m venv env
-	source env/bin/activate
+	`python3 -m venv env`
+	`source env/bin/activate`
 
 Installez les modules nécessaire au fonctionnement de l'application en utlisant la commande suivante :
 
-	pi3 install -r requirements.txt
+	`pip3 install -r requirements.txt`
 
 Vérifiez l'installation des modules en exécutant la commande suivante :
 
-	pip3 freeze
+	`pip3 freeze`
 
 ## Démarrage
 
-Depuis un terminal MAC / Linux, lancer la commande : python3 main.py
-Depuis un terminal Windows, lancer la commande : py main.py
+Depuis un terminal MAC / Linux, lancer la commande : `python3 main.py`
+Depuis un terminal Windows, lancer la commande : `py main.py
 
 ## Résultat
 

@@ -1,6 +1,5 @@
 from pathlib import Path
 import csv
-from path import pathdir
 from request import request
 
 

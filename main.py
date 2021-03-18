@@ -3,15 +3,11 @@ from bs4 import BeautifulSoup
 import csv
 from scrape_book import scrape_book
 from scrape_category import scrape_category
-
-# from path import pathdir
 from write_file import save_book
+from tqdm import tqdm
 
 
 BASE_DIR = "http://books.toscrape.com/"
-
-temp_url = "http://books.toscrape.com/catalogue/category/books/travel_2/index.html"
-
 
 def scrape_all_book_category(url_scrape):
     category_list = scrape_category(url_scrape)
@@ -28,7 +24,7 @@ def scrape(url):
     for li in lis:
         link = BASE_DIR + li.find("a")["href"]
         all_category_list.append(link)
-    for link in all_category_list:
+    for link in tqdm(all_category_list):
         scrape_all_book_category(link)
 
 
